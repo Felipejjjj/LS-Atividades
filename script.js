@@ -5,9 +5,9 @@ fetch("https://restcountries.com/v3.1/all?fields=name,flags")
     return response.json();
   })
   .then(function (data) {
+    data.sort((a, b) => a.name.common.localeCompare(b.name.common));
 
-    data.map((pais, index)=> {
-        // if (index <50)
+    data.map((pais)=> {
         container.innerHTML += `
         <li>
             <img src="${pais.flags.png}">
